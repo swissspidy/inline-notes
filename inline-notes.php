@@ -4,7 +4,7 @@
  *
  * Add elegant footnotes that expand directly in the content.
  *
- * @package   Voice_Search
+ * @package   Inline_Notes
  * @author    Pascal Birchler <pascal.birchler@spinpress.com>
  * @license   GPL-2.0+
  * @link      https://pascalbirchler.com
@@ -12,7 +12,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Inline Notes
- * Plugin URI:        https://spinpress.com/wordpress-web-speech-api/
+ * Plugin URI:        https://github.com/swissspidy/inline-notes/
  * Description:       Add elegant footnotes that expand directly in the content. Lightweight and print-friendly.
  * Version:           1.0.0
  * Author:            Pascal Birchler

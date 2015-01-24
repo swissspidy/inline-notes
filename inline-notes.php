@@ -83,6 +83,9 @@ final class Inline_Notes {
 
 		$note = esc_html( $atts['text'] );
 
+		// Enqueue the necessary stylesheet
+		wp_enqueue_style( 'inline-notes' );
+
 		self::$footnotes[] = array(
 			'content' => $content,
 			'note'    => $note,
@@ -149,7 +152,7 @@ final class Inline_Notes {
 		// Use minified CSS if SCRIPT_DEBUG is turned off
 		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
-		wp_enqueue_style(
+		wp_register_style(
 			'inline-notes',
 			plugins_url( '', __FILE__ ) . '/css/build/inline-notes' . $suffix . '.css',
 			array(),

@@ -42,6 +42,7 @@ final class Inline_Notes {
 	public static function init() {
 		// Add the shortcode
 		add_shortcode( 'note', array( __CLASS__, 'shortcode' ) );
+		self::shortcode_ui();
 
 		// Add high-priority hook to clear footnotes array
 		add_filter( 'the_content', array( __CLASS__, 'clear_footnotes' ), 1 );
@@ -102,6 +103,48 @@ final class Inline_Notes {
 		}
 
 		return $content;
+	}
+
+	/**
+	 * Register a UI for the Shortcode.
+	 */
+	public static function shortcode_ui() {
+		if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
+			return;
+		}
+
+		/**
+		 * Register a UI for the Shortcode.
+		 * Pass the shortcode tag (string)
+		 * and an array or args.
+		 */
+		shortcode_ui_register_for_shortcode(
+			'note',
+			array(
+
+				// Display label. String. Required.
+				'label' => __( 'Inline Note' ),
+
+				// Icon/image for shortcode. Optional. src or dashicons-$icon. Defaults to carrot.
+				'listItemImage' => 'dashicons-editor-quote',
+
+				// Available shortcode attributes and default values. Required. Array.
+				// Attribute model expects 'attr', 'type' and 'label'
+				// Supported field types: text, checkbox, textarea, radio, select, email, url, number, and date.
+				'attrs' => array(
+					array(
+						'label' => 'Word',
+						'attr'  => 'content',
+						'type'  => 'text',
+					),
+					array(
+						'label' => 'Note',
+						'attr'  => 'text',
+						'type'  => 'textarea',
+					),
+				),
+			)
+		);
 	}
 
 	/**
